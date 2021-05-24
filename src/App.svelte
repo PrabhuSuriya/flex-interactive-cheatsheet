@@ -1,12 +1,15 @@
 <script lang="ts">
-	import Tailwindcss from './Tailwind.svelte';
-	export let name: string;
+  import Tailwindcss from "./Tailwind.svelte";
+  import Header from "./Header.svelte";
+  import FlexRenderer from "./FlexRenderer.svelte";
 </script>
+
 <Tailwindcss />
 <main>
-	<h1 class="flex text-center">Hello {name}!</h1>
+  <Header />
+
+  <FlexRenderer />
 </main>
 
 <style>
-	
 </style>
