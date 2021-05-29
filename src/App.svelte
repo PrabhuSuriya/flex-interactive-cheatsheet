@@ -1,4 +1,5 @@
 <script lang="ts">
+	import FlexWrapSet from './FlexWrapSet.svelte';
   import FlexDirectionSet from "./FlexDirectionSet.svelte";
   import Tailwindcss from "./Tailwind.svelte";
   import Header from "./Header.svelte";
@@ -12,8 +13,8 @@
   const addChild = () => ChildrenStore.addChild();
   const removeChild = () => ChildrenStore.removeChild();
 
-  const ondirectionChange = (e) =>
-    ParentStore.changeDirection(e.detail.direction);
+  const ondirectionChange = (e) => ParentStore.changeDirection(e.detail.direction);
+  const onWrapChange = (e) => ParentStore.changeWrap(e.detail.wrap);
 </script>
 
 <Tailwindcss />
@@ -27,12 +28,13 @@
     
   </section> -->
   <div class="container">
-    <div class="top">
+    <div class="top flex-wrap">
       <ChildrenSet on:addChild={addChild} on:removeChild={removeChild} />
       <FlexDirectionSet
         direction={$ParentStore.flex_direction}
         on:directionChange={ondirectionChange}
       />
+      <FlexWrapSet wrap={$ParentStore.flex_wrap} on:wrapChange={onWrapChange} />
     </div>
     <div class="left">
       LEFT OPTIONS
