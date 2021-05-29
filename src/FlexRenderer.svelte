@@ -11,6 +11,8 @@
     width: 100%;
     flex-direction: {flexOptions.flex_direction};
     flex-wrap: {flexOptions.flex_wrap};
+    align-items: {flexOptions.align_items};
+    justify-content: {flexOptions.justify_content};
     "
     class="flex p-2 border-gray-500 border-2"
   >

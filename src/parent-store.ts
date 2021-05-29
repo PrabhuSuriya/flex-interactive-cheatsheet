@@ -4,6 +4,8 @@ import type { FlexOptions } from './flex-option.model';
 const defaultOptions: FlexOptions = {
 	flex_direction: 'row',
 	flex_wrap: 'nowrap',
+	align_items: 'stretch',
+	justify_content: 'flex-start'
 }
 
 function parentStore() {
@@ -16,6 +18,12 @@ function parentStore() {
 		}),
 		changeWrap: (wrap) => update(s => {
 			return Object.assign({}, s, { flex_wrap: wrap })
+		}),
+		changeAlignItems: (alignItems) => update(s => {
+			return Object.assign({}, s, { align_items: alignItems })
+		}),
+		changeJustifyContent: (justifyContent) => update(s => {
+			return Object.assign({}, s, { justify_content: justifyContent })
 		}),
 		reset: () => set(defaultOptions)
 	};

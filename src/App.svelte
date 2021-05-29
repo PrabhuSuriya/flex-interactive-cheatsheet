@@ -1,4 +1,6 @@
 <script lang="ts">
+	import FlexJustifyContentSet from './FlexJustifyContentSet.svelte';
+	import FlexAlignItemsSet from './FlexAlignItemsSet.svelte';
 	import FlexWrapSet from './FlexWrapSet.svelte';
   import FlexDirectionSet from "./FlexDirectionSet.svelte";
   import Tailwindcss from "./Tailwind.svelte";
@@ -15,6 +17,8 @@
 
   const ondirectionChange = (e) => ParentStore.changeDirection(e.detail.direction);
   const onWrapChange = (e) => ParentStore.changeWrap(e.detail.wrap);
+  const onAlignItemsChange = (e) => ParentStore.changeAlignItems(e.detail.alignItems);
+  const onJustifyContentChange = (e) => ParentStore.changeJustifyContent(e.detail.justifyContent);
 </script>
 
 <Tailwindcss />
@@ -37,10 +41,10 @@
       <FlexWrapSet wrap={$ParentStore.flex_wrap} on:wrapChange={onWrapChange} />
     </div>
     <div class="left">
-      LEFT OPTIONS
+      <FlexAlignItemsSet alignItems={$ParentStore.align_items} on:alignItemsChange={onAlignItemsChange} />
     </div>
     <div class="right">
-      RIGHT OPTIONS
+      <FlexJustifyContentSet justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
     <div class="bottom"></div>
     <div class="center border-2">

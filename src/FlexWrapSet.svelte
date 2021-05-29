@@ -8,14 +8,14 @@
 
   const onChange = (e) => dispatch("wrapChange", { wrap: e.detail.value });
 
-  const wrapOptions = [
+  const items = [
     { label: "NO-WRAP", value: "no-wrap" },
     { label: "WRAP", value: "wrap" },
     { label: "WRAP-REVERSE", value: "wrap-reverse" },
   ];
 </script>
 
-<ToggleOptions label="Flex Wrap" value={wrap} items={wrapOptions} on:change={onChange} />
+<ToggleOptions label="Flex Wrap" value={wrap} items={items} on:change={onChange} />
 
 <style>
 </style>

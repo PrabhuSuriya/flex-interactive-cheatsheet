@@ -8,7 +8,7 @@
   
     const onChange = (e) => dispatch("directionChange", { direction: e.detail.value });
   
-    const directionOptions = [
+    const items = [
       { label: "ROW", value: "row" },
       { label: "ROW-REVERSE", value: "row-reverse" },
       { label: "COLUMN", value: "column" },
@@ -16,7 +16,7 @@
       ];
   </script>
   
-  <ToggleOptions label="Flex Direction" value={direction} items={directionOptions} on:change={onChange} />
+  <ToggleOptions label="Flex Direction" value={direction} items={items} on:change={onChange} />
   
   <style>
   </style>
