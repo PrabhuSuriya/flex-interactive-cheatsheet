@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ArrowRenderer from './ArrowRenderer.svelte';
 	import FlexJustifyContentSet from './FlexJustifyContentSet.svelte';
 	import FlexAlignItemsSet from './FlexAlignItemsSet.svelte';
 	import FlexWrapSet from './FlexWrapSet.svelte';
@@ -50,10 +51,18 @@
     <div class="center border-2">
       <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore} />
     </div>
-    <div class="top-arrow"></div>
-    <div class="left-arrow"></div>
-    <div class="right-arraw"></div>
-    <div class="bottom-arrow"></div>
+    <div class="top-arrow">
+     <ArrowRenderer type="horizontal" directon={$ParentStore.flex_direction} />
+    </div>
+    <div class="left-arrow">
+      <ArrowRenderer type="vertical" directon={$ParentStore.flex_direction} />
+    </div>
+    <div class="right-arraw">
+      <ArrowRenderer type="vertical" directon={$ParentStore.flex_direction} />
+    </div>
+    <div class="bottom-arrow">
+      <ArrowRenderer type="horizontal" directon={$ParentStore.flex_direction} />
+    </div>
   </div>
 </main>
 
