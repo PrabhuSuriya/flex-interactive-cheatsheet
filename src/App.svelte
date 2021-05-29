@@ -48,7 +48,7 @@
       <FlexJustifyContentSet justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
     <div class="bottom"></div>
-    <div class="center border-2">
+    <div class="center">
       <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore} />
     </div>
     <div class="top-arrow">

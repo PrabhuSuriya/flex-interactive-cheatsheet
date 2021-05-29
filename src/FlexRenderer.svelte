@@ -5,7 +5,6 @@
   export let flexOptions: FlexOptions;
 </script>
 
-{#if children.length}
   <div
     style="
     width: 100%;
@@ -14,7 +13,7 @@
     align-items: {flexOptions.align_items};
     justify-content: {flexOptions.justify_content};
     "
-    class="flex p-2 border-gray-500 border-2"
+    class="flex p-2 border-gray-200 border-2"
   >
     {#each children as child, i}
       <div
@@ -24,7 +23,6 @@
       </div>
     {/each}
   </div>
-{/if}
 
 <style>
 </style>
