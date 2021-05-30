@@ -5,7 +5,8 @@ const defaultOptions: FlexOptions = {
 	flex_direction: 'row',
 	flex_wrap: 'nowrap',
 	align_items: 'stretch',
-	justify_content: 'flex-start'
+	justify_content: 'flex-start',
+	gap: { value: 1, unit: 'em'}
 }
 
 function parentStore() {
@@ -24,6 +25,9 @@ function parentStore() {
 		}),
 		changeJustifyContent: (justifyContent) => update(s => {
 			return Object.assign({}, s, { justify_content: justifyContent })
+		}),
+		changeGap: (gap) => update(s => {
+			return Object.assign({}, s, { gap: gap })
 		}),
 		reset: () => set(defaultOptions)
 	};

@@ -13,19 +13,25 @@
     flex-wrap: {flexOptions.flex_wrap};
     align-items: {flexOptions.align_items};
     justify-content: {flexOptions.justify_content};
+    gap: {flexOptions.gap.value}{flexOptions.gap.unit};
     "
     class="flex p-2 border-gray-200 border-2"
   >
     {#each children as child, i}
       <div
-        class="flex items-center justify-center w-28 h-28 border-2 border-gray-700 bg-green-700 m-2 text-6xl text-white "
+        class="flex items-center justify-center w-28 h-28 border-2 border-gray-700 bg-green-700 text-6xl text-white "
       >
         {i}
       </div>
     {/each}
   </div>
 {:else}
-  <div class="flex p-2 border-gray-200 border-2 items-center justify-center" style="width: 100%;">Start adding some children..</div>
+  <div
+    class="flex p-2 border-gray-200 border-2 items-center justify-center"
+    style="width: 100%;"
+  >
+    Start adding some children..
+  </div>
 {/if}
 
 <style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import GapSet from './GapSet.svelte';
 	import ArrowRenderer from './ArrowRenderer.svelte';
 	import FlexJustifyContentSet from './FlexJustifyContentSet.svelte';
 	import FlexAlignItemsSet from './FlexAlignItemsSet.svelte';
@@ -20,25 +21,17 @@
   const onWrapChange = (e) => ParentStore.changeWrap(e.detail.wrap);
   const onAlignItemsChange = (e) => ParentStore.changeAlignItems(e.detail.alignItems);
   const onJustifyContentChange = (e) => ParentStore.changeJustifyContent(e.detail.justifyContent);
+  const onGapChange = (e) => ParentStore.changeGap(e.detail.gap);
 </script>
 
 <Tailwindcss />
 <main>
   <Header />
-  <!-- <section class="flex">
-   
-  </section>
-
-  <section class="p-5 border-gray-500 border-2">
-    
-  </section> -->
   <div class="container">
     <div class="top flex-wrap flex-col md:flex-row">
-      <ChildrenSet on:addChild={addChild} on:removeChild={removeChild} />
-      <FlexDirectionSet
-        direction={$ParentStore.flex_direction}
-        on:directionChange={ondirectionChange}
-      />
+      <ChildrenSet children={$ChildrenStore} on:addChild={addChild} on:removeChild={removeChild} />
+      <GapSet gap={$ParentStore.gap} on:gapChange={onGapChange} />
+      <FlexDirectionSet direction={$ParentStore.flex_direction} on:directionChange={ondirectionChange} />
       <FlexWrapSet wrap={$ParentStore.flex_wrap} on:wrapChange={onWrapChange} />
       <FlexAlignItemsSet class="md:hidden" direction="horizontal" alignItems={$ParentStore.align_items} on:alignItemsChange={onAlignItemsChange} />
       <FlexJustifyContentSet direction="horizontal" class="md:hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
@@ -49,7 +42,9 @@
     <div class="right">
       <FlexJustifyContentSet  class="md:flex hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
-    <div class="bottom"></div>
+    <div class="bottom flex-wrap flex-col md:flex-row">
+      
+    </div>
     <div class="center">
       <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore} />
     </div>
@@ -88,26 +83,17 @@
 @media (max-width:768px) {
   .container { 
     height: calc(100vh - 4rem + 500px);
-    grid-template-columns: 0fr 0.2fr minmax(0, 3.8fr) 0.2fr 0fr;
+    grid-template-columns: 0fr 0.1fr minmax(0, 3.8fr) 0.1fr 0fr;
   }
 }
 
 .top { grid-area: top; }
-
 .left { grid-area: left; }
-
 .right { grid-area: right; }
-
 .bottom { grid-area: bottom; }
-
 .center { grid-area: center; }
-
 .top-arrow { grid-area: top-arrow; }
-
 .left-arrow { grid-area: left-arrow; }
-
 .right-arraw { grid-area: right-arraw; }
-
 .bottom-arrow { grid-area: bottom-arrow; }
-
 </style>
