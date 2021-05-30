@@ -64,3 +64,8 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+ @media (max-width:768px) {
+	 body{
+		 font-size: 10px;
+	 }
+ }

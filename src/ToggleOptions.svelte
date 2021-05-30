@@ -5,13 +5,15 @@
   export let value: string;
   export let items = [];
   export let direction = 'horizontal';
+  let clazz = '';
+	export { clazz as class };
 
   const dispatch = createEventDispatcher();
   const change = (value: string) => dispatch("change", { value });
 
 </script>
 
-<section class="p-2 flex flex-col m-2 rounded" style="background-color: #9DB2F7;">
+<section class="{clazz} p-2 flex flex-col m-2 rounded" style="background-color: #9DB2F7;">
   <h5 class="font-semibold text-base">{label}:</h5>
   <section class="flex" class:flex-col={direction === 'vertical'}>
     {#each items as item}

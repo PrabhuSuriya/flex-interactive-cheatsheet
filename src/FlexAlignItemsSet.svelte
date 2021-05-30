@@ -3,6 +3,9 @@
   import ToggleOptions from "./ToggleOptions.svelte";
 
   export let alignItems: string;
+  export let direction: string = 'vertical';
+  let clazz = '';
+	export { clazz as class };
 
   const dispatch = createEventDispatcher();
 
@@ -20,8 +23,9 @@
 </script>
 
 <ToggleOptions
+  class={clazz}
   label="Align Items"
-  direction="vertical"
+  {direction}
   value={alignItems}
   items={items}
   on:change={onChange}

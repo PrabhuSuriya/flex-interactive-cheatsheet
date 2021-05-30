@@ -3,6 +3,9 @@
   import ToggleOptions from "./ToggleOptions.svelte";
 
   export let justifyContent: string;
+  export let direction: string = 'vertical';
+  let clazz = '';
+	export { clazz as class };
 
   const dispatch = createEventDispatcher();
 
@@ -20,8 +23,9 @@
 </script>
 
 <ToggleOptions
+  class={clazz}
   label="Justify Content"
-  direction="vertical"
+  {direction}
   value={justifyContent}
   {items}
   on:change={onChange}

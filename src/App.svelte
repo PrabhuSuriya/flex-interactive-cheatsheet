@@ -33,19 +33,21 @@
     
   </section> -->
   <div class="container">
-    <div class="top flex-wrap">
+    <div class="top flex-wrap flex-col md:flex-row">
       <ChildrenSet on:addChild={addChild} on:removeChild={removeChild} />
       <FlexDirectionSet
         direction={$ParentStore.flex_direction}
         on:directionChange={ondirectionChange}
       />
       <FlexWrapSet wrap={$ParentStore.flex_wrap} on:wrapChange={onWrapChange} />
+      <FlexAlignItemsSet class="md:hidden" direction="horizontal" alignItems={$ParentStore.align_items} on:alignItemsChange={onAlignItemsChange} />
+      <FlexJustifyContentSet direction="horizontal" class="md:hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
     <div class="left">
-      <FlexAlignItemsSet alignItems={$ParentStore.align_items} on:alignItemsChange={onAlignItemsChange} />
+      <FlexAlignItemsSet class="md:flex hidden" alignItems={$ParentStore.align_items} on:alignItemsChange={onAlignItemsChange} />
     </div>
     <div class="right">
-      <FlexJustifyContentSet justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
+      <FlexJustifyContentSet  class="md:flex hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
     <div class="bottom"></div>
     <div class="center">
@@ -81,6 +83,12 @@
     "bottom bottom bottom bottom bottom";
   >div {
     display: flex;
+  }
+}
+@media (max-width:768px) {
+  .container { 
+    height: calc(100vh - 4rem + 500px);
+    grid-template-columns: 0fr 0.2fr minmax(0, 3.8fr) 0.2fr 0fr;
   }
 }
 
