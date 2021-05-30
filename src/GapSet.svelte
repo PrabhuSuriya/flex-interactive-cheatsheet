@@ -40,16 +40,18 @@
 >
   <div class="ml-2">
     <h5 class="font-semibold text-base">Set Gap:</h5>
-    <section class="flex">
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={() => onChange("REMOVEGAP")}>-</button
-      >
-      <input class="mr-2 w-10 text-center" type="number" value={gap.value} />
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={() => onChange("ADDGAP")}>+</button
-      >
+    <section class="flex flex-wrap md:flex-nowrap">
+      <div class="flex">
+        <button
+          class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
+          on:click={() => onChange("REMOVEGAP")}>-</button
+        >
+        <input class="mr-2 w-10 text-center" type="number" value={gap.value} />
+        <button
+          class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
+          on:click={() => onChange("ADDGAP")}>+</button
+        >
+      </div>
       <ToggleOptionsCompact
         value={gap.unit}
         {items}

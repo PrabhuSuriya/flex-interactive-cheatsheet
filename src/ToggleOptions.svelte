@@ -15,7 +15,7 @@
 
 <section class="{clazz} p-2 flex flex-col m-2 rounded" style="background-color: #9DB2F7;">
   <h5 class="font-semibold text-base">{label}:</h5>
-  <section class="flex" class:flex-col={direction === 'vertical'}>
+  <section class="flex flex-wrap md:flex-nowrap gap-y-2" class:flex-col={direction === 'vertical'}>
     {#each items as item}
       <button
         class="hover:bg-green-300 font-bold py-2 px-4 rounded border-yellow-800"
