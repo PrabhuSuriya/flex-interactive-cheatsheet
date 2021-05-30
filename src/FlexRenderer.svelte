@@ -5,6 +5,7 @@
   export let flexOptions: FlexOptions;
 </script>
 
+{#if children.length}
   <div
     style="
     width: 100%;
@@ -23,6 +24,9 @@
       </div>
     {/each}
   </div>
+{:else}
+  <div class="flex p-2 border-gray-200 border-2 items-center justify-center" style="width: 100%;">Start adding some children..</div>
+{/if}
 
 <style>
 </style>
