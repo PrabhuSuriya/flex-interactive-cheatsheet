@@ -15,7 +15,7 @@
     justify-content: {flexOptions.justify_content};
     gap: {flexOptions.gap.value}{flexOptions.gap.unit};
     "
-    class="flex p-2 border-gray-200 border-2"
+    class="flex border-gray-200 border-2"
   >
     {#each children as child, i}
       <div
