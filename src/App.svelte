@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ChildSet from './ChildSet.svelte';
 	import GapSet from './GapSet.svelte';
 	import ArrowRenderer from './ArrowRenderer.svelte';
 	import FlexJustifyContentSet from './FlexJustifyContentSet.svelte';
@@ -22,6 +23,10 @@
   const onAlignItemsChange = (e) => ParentStore.changeAlignItems(e.detail.alignItems);
   const onJustifyContentChange = (e) => ParentStore.changeJustifyContent(e.detail.justifyContent);
   const onGapChange = (e) => ParentStore.changeGap(e.detail.gap);
+
+  const onChildSelected = (e) => ChildrenStore.selectChild(e.detail)
+  const onIncreaseOrder = (e) => ChildrenStore.increaseOrder(e.detail.id);
+  const onDecreaseOrder = (e) => ChildrenStore.decreaseOrder(e.detail.id);
 </script>
 
 <Tailwindcss />
@@ -29,7 +34,7 @@
   <Header />
   <div class="container sm:max-w-none">
     <div class="top flex-row flex-nowrap md:flex-wrap overflow-x-scroll md:overflow-x-auto" style="height: fit-content;">
-      <ChildrenSet children={$ChildrenStore} on:addChild={addChild} on:removeChild={removeChild} />
+      <ChildrenSet children={$ChildrenStore.children} on:addChild={addChild} on:removeChild={removeChild} />
       <GapSet gap={$ParentStore.gap} on:gapChange={onGapChange} />
       <FlexDirectionSet direction={$ParentStore.flex_direction} on:directionChange={ondirectionChange} />
       <FlexWrapSet wrap={$ParentStore.flex_wrap} on:wrapChange={onWrapChange} />
@@ -43,9 +48,12 @@
       <FlexJustifyContentSet  class="md:flex hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
     <div class="bottom flex-wrap flex-col md:flex-row">
+      {#if $ChildrenStore.selectedChild}
+         <ChildSet child={$ChildrenStore.selectedChild} on:increaseOrder={onIncreaseOrder} on:decreaseOrder={onDecreaseOrder} />
+      {/if}
     </div>
     <div class="center">
-      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore} />
+      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore.children} on:childSelected={onChildSelected} />
     </div>
     <div class="top-arrow">
      <ArrowRenderer type="horizontal" directon={$ParentStore.flex_direction} />

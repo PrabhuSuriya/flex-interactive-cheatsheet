@@ -1,14 +1,20 @@
 <script lang="typescript">
-  import type { FlexOptions } from "./flex-option.model";
+  import { createEventDispatcher } from "svelte";
+import type { FlexOptions } from "./flex-option.model";
 
   export let children: any[] = [];
   export let flexOptions: FlexOptions;
+
+  const dispatch = createEventDispatcher();
+
+  const childSelected = (child) => dispatch('childSelected', child);
 </script>
 
 {#if children.length}
   <div
     style="
     width: 100%;
+    user-select: none;
     flex-direction: {flexOptions.flex_direction};
     flex-wrap: {flexOptions.flex_wrap};
     align-items: {flexOptions.align_items};
@@ -20,6 +26,8 @@
     {#each children as child, i}
       <div
         class="flex items-center justify-center w-28 h-28 border-2 border-gray-700 bg-green-700 text-6xl text-white "
+        style="order: {child.order};"
+        on:click={() => childSelected(child)}
       >
         {i}
       </div>
