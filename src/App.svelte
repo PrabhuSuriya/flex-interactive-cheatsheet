@@ -82,8 +82,9 @@
 }
 @media (max-width:768px) {
   .container { 
-    height: calc(100vh - 4rem + 500px);
+    height: calc(100vh - 4rem);
     grid-template-columns: 0fr 0.1fr minmax(0, 3.8fr) 0.1fr 0fr;
+    grid-template-rows: 0.4fr 0.1fr minmax(0, 3.8fr) 0.1fr 0.4fr;
   }
 }
 
