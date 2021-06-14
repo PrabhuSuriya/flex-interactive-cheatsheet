@@ -40,7 +40,7 @@
 >
   <div class="ml-2">
     <h5 class="font-semibold text-base">Set Gap:</h5>
-    <section class="flex flex-wrap md:flex-nowrap">
+    <section class="flex flex-nowrap">
       <div class="flex">
         <button
           class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"

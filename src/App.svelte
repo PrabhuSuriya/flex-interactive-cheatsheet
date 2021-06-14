@@ -27,8 +27,8 @@
 <Tailwindcss />
 <main>
   <Header />
-  <div class="container">
-    <div class="top flex-wrap flex-col md:flex-row">
+  <div class="container sm:max-w-none">
+    <div class="top flex-row flex-nowrap md:flex-wrap overflow-x-scroll md:overflow-x-auto" style="height: fit-content;">
       <ChildrenSet children={$ChildrenStore} on:addChild={addChild} on:removeChild={removeChild} />
       <GapSet gap={$ParentStore.gap} on:gapChange={onGapChange} />
       <FlexDirectionSet direction={$ParentStore.flex_direction} on:directionChange={ondirectionChange} />
