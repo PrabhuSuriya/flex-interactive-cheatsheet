@@ -43,7 +43,6 @@
       <FlexJustifyContentSet  class="md:flex hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
     <div class="bottom flex-wrap flex-col md:flex-row">
-      
     </div>
     <div class="center">
       <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore} />
@@ -65,7 +64,7 @@
 
 <style lang="scss">
  .container {
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 3rem);
   display: grid;
   grid-template-columns: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.7fr;
   grid-template-rows: 0.4fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.4fr;
@@ -82,7 +81,6 @@
 }
 @media (max-width:768px) {
   .container { 
-    height: calc(100vh - 4rem);
     grid-template-columns: 0fr 0.1fr minmax(0, 3.8fr) 0.1fr 0fr;
     grid-template-rows: 0.4fr 0.1fr minmax(0, 3.8fr) 0.1fr 0.4fr;
   }

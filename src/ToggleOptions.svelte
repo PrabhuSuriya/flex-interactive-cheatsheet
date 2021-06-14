@@ -13,7 +13,7 @@
 
 </script>
 
-<section class="{clazz} p-1 m-1 md:p-2 flex flex-col md:m-2 rounded" style="background-color: #9DB2F7;">
+<section class="{clazz} p-1 m-1 md:p-2 flex flex-col md:m-2 rounded whitespace-nowrap" style="background-color: #9DB2F7;">
   <h5 class="font-semibold text-base">{label}:</h5>
   <section class="flex flex-nowrap gap-y-2" class:flex-col={direction === 'vertical'}>
     {#each items as item}
