@@ -27,6 +27,10 @@
   const onChildSelected = (e) => ChildrenStore.selectChild(e.detail)
   const onIncreaseOrder = (e) => ChildrenStore.increaseOrder(e.detail.id);
   const onDecreaseOrder = (e) => ChildrenStore.decreaseOrder(e.detail.id);
+  const onIncreaseFlexGrow = (e) => ChildrenStore.increaseFlexGrow(e.detail.id);
+  const onDecreaseFlexGrow = (e) => ChildrenStore.decreaseFlexGrow(e.detail.id);
+  const onIncreaseFlexShrink = (e) => ChildrenStore.increaseFlexShrink(e.detail.id);
+  const onDecreaseFlexShrink = (e) => ChildrenStore.decreaseFlexShrink(e.detail.id);
 </script>
 
 <Tailwindcss />
@@ -49,7 +53,11 @@
     </div>
     <div class="bottom flex-wrap flex-col md:flex-row">
       {#if $ChildrenStore.selectedChild}
-         <ChildSet child={$ChildrenStore.selectedChild} on:increaseOrder={onIncreaseOrder} on:decreaseOrder={onDecreaseOrder} />
+         <ChildSet 
+         child={$ChildrenStore.selectedChild} 
+         on:increaseOrder={onIncreaseOrder} on:decreaseOrder={onDecreaseOrder}
+         on:increaseFlexGrow={onIncreaseFlexGrow} on:decreaseFlexGrow={onDecreaseFlexGrow} 
+         on:increaseFlexShrink={onIncreaseFlexShrink} on:decreaseFlexShrink={onDecreaseFlexShrink} />
       {/if}
     </div>
     <div class="center">
@@ -75,7 +83,7 @@
   height: calc(100vh - 3rem);
   display: grid;
   grid-template-columns: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.7fr;
-  grid-template-rows: 0.4fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.4fr;
+  grid-template-rows: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.4fr;
   gap: 0px 0px;
   grid-template-areas:
     "top top top top top"
@@ -90,7 +98,7 @@
 @media (max-width:768px) {
   .container { 
     grid-template-columns: 0fr 0.1fr minmax(0, 3.8fr) 0.1fr 0fr;
-    grid-template-rows: 0.4fr 0.1fr minmax(0, 3.8fr) 0.1fr 0.4fr;
+    grid-template-rows: 0.7fr 0.1fr minmax(0, 3.8fr) 0.1fr 0.4fr;
   }
 }
 

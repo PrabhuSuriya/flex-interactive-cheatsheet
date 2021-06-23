@@ -9,11 +9,15 @@ export interface FlexOptions {
 export class ChildOptions {
     id: number;
     order?: number = 0;
+    flexGrow?: number = 0;
+    flexShrink?: number = 1;
 }
 
 export const getChild = (id: number): ChildOptions => ({
     id,
-    order: 0
+    order: 0,
+    flexGrow: 0,
+    flexShrink: 1
 })
 
 export interface Gap { value: number, unit: Unit }

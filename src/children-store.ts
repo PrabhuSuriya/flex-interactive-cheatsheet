@@ -31,6 +31,29 @@ function childrenStore() {
 			child.order--;
 			return Object.assign({}, s);
 		}),
+
+		increaseFlexGrow: (id) => update(s => {
+			const child = s.children.find(x => x.id === id);
+			child.flexGrow++;
+			return Object.assign({}, s);
+		}),
+		decreaseFlexGrow: (id) => update(s => {
+			const child = s.children.find(x => x.id === id);
+			child.flexGrow--;
+			return Object.assign({}, s);
+		}),
+
+		increaseFlexShrink: (id) => update(s => {
+			const child = s.children.find(x => x.id === id);
+			child.flexShrink++;
+			return Object.assign({}, s);
+		}),
+		decreaseFlexShrink: (id) => update(s => {
+			const child = s.children.find(x => x.id === id);
+			child.flexShrink--;
+			return Object.assign({}, s);
+		}),
+
 		reset: () => set({ children: [], selectedChild: null })
 	};
 }

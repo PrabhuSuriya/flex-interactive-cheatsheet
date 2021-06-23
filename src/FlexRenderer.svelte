@@ -1,13 +1,13 @@
 <script lang="typescript">
   import { createEventDispatcher } from "svelte";
-import type { FlexOptions } from "./flex-option.model";
+  import type { FlexOptions } from "./flex-option.model";
 
   export let children: any[] = [];
   export let flexOptions: FlexOptions;
 
   const dispatch = createEventDispatcher();
 
-  const childSelected = (child) => dispatch('childSelected', child);
+  const childSelected = (child) => dispatch("childSelected", child);
 </script>
 
 {#if children.length}
@@ -25,11 +25,22 @@ import type { FlexOptions } from "./flex-option.model";
   >
     {#each children as child, i}
       <div
-        class="flex items-center justify-center w-28 h-28 border-2 border-gray-700 bg-green-700 text-6xl text-white "
-        style="order: {child.order};"
+        class="flex items-start justify-start w-28 h-28 border-2 border-gray-700 bg-green-700 text-white relative"
+        style="
+        order: {child.order};
+        flex-grow: {child.flexGrow};
+        flex-shrink: {child.flexShrink};
+        "
         on:click={() => childSelected(child)}
       >
-        {i}
+        <span class="child-index absolute top-0 right-0 p-1 font-bold text-sm">
+          {i}
+        </span>
+        <div class="child-styles text-xs leading-tight p-1">
+          <div> order: {child.order} </div>
+          <div> flex-grow: {child.flexGrow} </div>
+          <div> flex-shrink: {child.flexShrink} </div>
+        </div>
       </div>
     {/each}
   </div>

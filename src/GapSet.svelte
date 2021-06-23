@@ -3,27 +3,12 @@
   import { createEventDispatcher } from "svelte";
   import { ChildrenStore } from "./children-store";
   import type { Gap } from "./flex-option.model";
+  import UnitOptions from "./UnitOptions.svelte";
 
   export let gap: Gap;
   const dispatch = createEventDispatcher();
 
-  const onChange = (type, unit?) => {
-    switch (type) {
-      case "ADDGAP": {
-        gap.value += 1;
-        break;
-      }
-      case "REMOVEGAP": {
-        gap.value -= 1;
-        break;
-      }
-      case "UNIT": {
-        gap.unit = unit;
-        break;
-      }
-    }
-    dispatch("gapChange", { gap });
-  };
+  const onChange = (e) => dispatch("gapChange", { gap: e.detail });
 
   const items = [
     { label: "px", value: "px" },
@@ -34,32 +19,13 @@
   ];
 </script>
 
-<section
-  class="p-1 m-1 md:p-2 flex flex-row md:m-2 rounded"
-  style="background-color: #a1e085;"
->
-  <div class="ml-2">
-    <h5 class="font-semibold text-base">Set Gap:</h5>
-    <section class="flex flex-nowrap">
-      <div class="flex">
-        <button
-          class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-          on:click={() => onChange("REMOVEGAP")}>-</button
-        >
-        <input class="mr-2 w-10 text-center" type="number" value={gap.value} />
-        <button
-          class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-          on:click={() => onChange("ADDGAP")}>+</button
-        >
-      </div>
-      <ToggleOptionsCompact
-        value={gap.unit}
-        {items}
-        on:change={(e) => onChange("UNIT", e.detail.value)}
-      />
-    </section>
-  </div>
-</section>
+<UnitOptions
+  value={gap.value}
+  unit={gap.unit}
+  title="Set Gap"
+  {items}
+  on:change={onChange}
+/>
 
 <style>
   /* Chrome, Safari, Edge, Opera */
