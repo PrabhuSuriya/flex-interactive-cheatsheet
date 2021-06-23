@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ChildAlignSelfSet from './ChildAlignSelfSet.svelte';
 	import UnitOptions from './UnitOptions.svelte';
   import { createEventDispatcher } from "svelte";
 
@@ -21,6 +22,7 @@
   const increaseFlexShrink = () => dispatch("increaseFlexShrink", child);
   const decreaseFlexShrink = () => dispatch("decreaseFlexShrink", child);
   const onChangeFlexBasis = (e) => dispatch("changeFlexBasis", {child, flexBasis: e.detail});
+  const onAlignSelfChange = (e) => dispatch("onAlignSelfChange", {child, alignSelf: e.detail});
   
 </script>
 
@@ -54,6 +56,7 @@
   on:remove={onChangeFlexBasis}
   on:unit={onChangeFlexBasis}
 />
+<ChildAlignSelfSet direction="horizontal" alignSelf={child.alignSelf} on:alignSelfChange={onAlignSelfChange} />
 
 
 

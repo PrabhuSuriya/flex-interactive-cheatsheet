@@ -34,7 +34,6 @@ function childrenStore() {
 			child.order--;
 			return Object.assign({}, s);
 		}),
-
 		increaseFlexGrow: (id) => update(s => {
 			const child = s.children.find(x => x.id === id);
 			child.flexGrow++;
@@ -45,7 +44,6 @@ function childrenStore() {
 			child.flexGrow--;
 			return Object.assign({}, s);
 		}),
-
 		increaseFlexShrink: (id) => update(s => {
 			const child = s.children.find(x => x.id === id);
 			child.flexShrink++;
@@ -56,11 +54,14 @@ function childrenStore() {
 			child.flexShrink--;
 			return Object.assign({}, s);
 		}),
-
 		setFlexBasis: (id, flexBasis) => update(s => {
 			const child = s.children.find(x => x.id === id);
 			child.flexBasis = flexBasis;
-			
+			return Object.assign({}, s);
+		}),
+		setAlignSelf: (id, alignSelf) => update(s => {
+			const child = s.children.find(x => x.id === id);
+			child.alignSelf = alignSelf;
 			return Object.assign({}, s);
 		}),
 

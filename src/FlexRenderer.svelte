@@ -41,6 +41,7 @@
         flex-grow: {child.flexGrow};
         flex-shrink: {child.flexShrink};
         flex-basis: {getCSSUnitString(child.flexBasis)};
+        align-self: {child.alignSelf};
         "
         on:click={() => childSelected(child)}
       >
@@ -55,6 +56,7 @@
           <div> flex-grow: {child.flexGrow} </div>
           <div> flex-shrink: {child.flexShrink} </div>
           <div> flex-basis: {getCSSUnitString(child.flexBasis)} </div>
+          <div> align-self: {child.alignSelf} </div>
         </div>
       </div>
     {/each}

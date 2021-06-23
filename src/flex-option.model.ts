@@ -12,6 +12,7 @@ export class ChildOptions {
     flexGrow?: number = 0;
     flexShrink?: number = 1;
     flexBasis?: CSSUnit;
+    alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 }
 
 export const getChild = (id: number): ChildOptions => ({
@@ -19,7 +20,8 @@ export const getChild = (id: number): ChildOptions => ({
     order: 0,
     flexGrow: 0,
     flexShrink: 1,
-    flexBasis: { value: 0, unit: 'auto' }
+    flexBasis: { value: 0, unit: 'auto' },
+    alignSelf: 'auto'
 });
 
 export const getCSSUnitString = (cssUnit: CSSUnit): string => {

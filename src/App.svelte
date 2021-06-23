@@ -31,6 +31,8 @@
   const onIncreaseFlexShrink = (e) => ChildrenStore.increaseFlexShrink(e.detail.id);
   const onDecreaseFlexShrink = (e) => ChildrenStore.decreaseFlexShrink(e.detail.id);
   const onChangeFlexBasis = (e) => ChildrenStore.setFlexBasis(e.detail.child.id, e.detail.flexBasis);
+  const onAlignSelfChange = (e) => ChildrenStore.setAlignSelf(e.detail.child.id, e.detail.alignSelf);
+
 
 
 </script>
@@ -60,7 +62,9 @@
          on:increaseOrder={onIncreaseOrder} on:decreaseOrder={onDecreaseOrder}
          on:increaseFlexGrow={onIncreaseFlexGrow} on:decreaseFlexGrow={onDecreaseFlexGrow} 
          on:increaseFlexShrink={onIncreaseFlexShrink} on:decreaseFlexShrink={onDecreaseFlexShrink}
-         on:changeFlexBasis={onChangeFlexBasis} />
+         on:changeFlexBasis={onChangeFlexBasis} on:onAlignSelfChange={onAlignSelfChange} />
+        
+
       {/if}
     </div>
     <div class="center">
