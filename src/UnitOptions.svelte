@@ -3,7 +3,7 @@
   import { createEventDispatcher } from "svelte";
 
   export let value;
-  export let unit;
+  export let unit = undefined;
   export let title;
   export let items = [];
   const dispatch = createEventDispatcher();
@@ -11,15 +11,15 @@
   const onChange = (type, changedUnit?) => {
     switch (type) {
       case "ADD": {
-        dispatch("change", { value: value + 1, unit });
+        dispatch("add", { value: value + 1, unit });
         break;
       }
       case "REMOVE": {
-        dispatch("change", { value: value - 1, unit });
+        dispatch("remove", { value: value - 1, unit });
         break;
       }
       case "UNIT": {
-        dispatch("change", { value: value - 1, unit: changedUnit });
+        dispatch("unit", { value: value - 1, unit: changedUnit });
         break;
       }
     }

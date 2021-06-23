@@ -1,4 +1,5 @@
 <script lang="ts">
+	import UnitOptions from './UnitOptions.svelte';
   import { createEventDispatcher } from "svelte";
 
   export let children;
@@ -9,31 +10,13 @@
   
 </script>
 
-<section
-  class="p-1 m-1 md:p-2 flex flex-row md:m-2 rounded"
-  style="background-color: #a1e085;"
->
-  <div>
-    <h5 class="font-semibold text-base">Set Children:</h5>
-    <section class="flex">
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={removeChild}>-</button
-      >
-      <input
-        class="mr-2 w-10 text-center"
-        type="number"
-        name=""
-        id=""
-        value={children.length}
-      />
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={addChild}>+</button
-      >
-    </section>
-  </div>
-</section>
+<UnitOptions
+  value={children.length}
+  title="Set Children"
+  items={[]}
+  on:add={addChild}
+  on:remove={removeChild}
+/>
 
 <style>
   /* Chrome, Safari, Edge, Opera */
