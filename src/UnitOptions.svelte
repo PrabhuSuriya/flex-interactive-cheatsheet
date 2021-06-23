@@ -19,7 +19,7 @@
         break;
       }
       case "UNIT": {
-        dispatch("unit", { value: value - 1, unit: changedUnit });
+        dispatch("unit", { value: value, unit: changedUnit });
         break;
       }
     }

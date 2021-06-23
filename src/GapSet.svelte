@@ -2,10 +2,10 @@
   import ToggleOptionsCompact from "./ToggleOptionsCompact.svelte";
   import { createEventDispatcher } from "svelte";
   import { ChildrenStore } from "./children-store";
-  import type { Gap } from "./flex-option.model";
+  import type { CSSUnit } from "./flex-option.model";
   import UnitOptions from "./UnitOptions.svelte";
 
-  export let gap: Gap;
+  export let gap: CSSUnit;
   const dispatch = createEventDispatcher();
 
   const onChange = (e) => dispatch("gapChange", { gap: e.detail });

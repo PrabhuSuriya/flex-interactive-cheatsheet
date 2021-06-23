@@ -54,6 +54,13 @@ function childrenStore() {
 			return Object.assign({}, s);
 		}),
 
+		setFlexBasis: (id, flexBasis) => update(s => {
+			const child = s.children.find(x => x.id === id);
+			child.flexBasis = flexBasis;
+			
+			return Object.assign({}, s);
+		}),
+
 		reset: () => set({ children: [], selectedChild: null })
 	};
 }

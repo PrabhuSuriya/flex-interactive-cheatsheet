@@ -5,12 +5,22 @@
   export let child;
   const dispatch = createEventDispatcher();
 
+  const items = [
+    { label: "px", value: "px" },
+    { label: "%", value: "%" },
+    { label: "em", value: "em" },
+    { label: "cm", value: "cm" },
+    { label: "pt", value: "pt" },
+    { label: "auto", value: "auto" },
+  ];
+
   const increaseOrder = () => dispatch("increaseOrder", child);
   const decreaseOrder = () => dispatch("decreaseOrder", child);
   const increaseFlexGrow = () => dispatch("increaseFlexGrow", child);
   const decreaseFlexGrow = () => dispatch("decreaseFlexGrow", child);
   const increaseFlexShrink = () => dispatch("increaseFlexShrink", child);
   const decreaseFlexShrink = () => dispatch("decreaseFlexShrink", child);
+  const onChangeFlexBasis = (e) => dispatch("changeFlexBasis", {child, flexBasis: e.detail});
   
 </script>
 
@@ -34,6 +44,15 @@
   items={[]}
   on:add={increaseFlexShrink}
   on:remove={decreaseFlexShrink}
+/>
+<UnitOptions
+  value={child.flexBasis.value}
+  unit={child.flexBasis.unit}
+  title="Set Flex Basis"
+  {items}
+  on:add={onChangeFlexBasis}
+  on:remove={onChangeFlexBasis}
+  on:unit={onChangeFlexBasis}
 />
 
 

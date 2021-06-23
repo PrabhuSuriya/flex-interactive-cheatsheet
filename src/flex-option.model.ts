@@ -3,7 +3,7 @@ export interface FlexOptions {
     flex_wrap: 'nowrap' | 'wrap' | 'wrap-reverse';
     align_items: 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'auto';
     justify_content: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
-    gap: Gap;
+    gap: CSSUnit;
 }
 
 export class ChildOptions {
@@ -11,15 +11,24 @@ export class ChildOptions {
     order?: number = 0;
     flexGrow?: number = 0;
     flexShrink?: number = 1;
+    flexBasis?: CSSUnit;
 }
 
 export const getChild = (id: number): ChildOptions => ({
     id,
     order: 0,
     flexGrow: 0,
-    flexShrink: 1
-})
+    flexShrink: 1,
+    flexBasis: { value: 0, unit: 'auto' }
+});
 
-export interface Gap { value: number, unit: Unit }
+export const getCSSUnitString = (cssUnit: CSSUnit): string => {
+    if (cssUnit.unit === 'auto') {
+        return cssUnit.unit;
+    }
+    return `${cssUnit.value}${cssUnit.unit}`;
+}
 
-type Unit = 'px' | '%' | 'em' | 'cm' | 'pt';
+export interface CSSUnit { value: number, unit: Unit }
+
+type Unit = 'px' | '%' | 'em' | 'cm' | 'pt' | 'auto';

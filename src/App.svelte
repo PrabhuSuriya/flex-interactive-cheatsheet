@@ -31,6 +31,9 @@
   const onDecreaseFlexGrow = (e) => ChildrenStore.decreaseFlexGrow(e.detail.id);
   const onIncreaseFlexShrink = (e) => ChildrenStore.increaseFlexShrink(e.detail.id);
   const onDecreaseFlexShrink = (e) => ChildrenStore.decreaseFlexShrink(e.detail.id);
+  const onChangeFlexBasis = (e) => ChildrenStore.setFlexBasis(e.detail.child.id, e.detail.flexBasis);
+
+
 </script>
 
 <Tailwindcss />
@@ -57,7 +60,8 @@
          child={$ChildrenStore.selectedChild} 
          on:increaseOrder={onIncreaseOrder} on:decreaseOrder={onDecreaseOrder}
          on:increaseFlexGrow={onIncreaseFlexGrow} on:decreaseFlexGrow={onDecreaseFlexGrow} 
-         on:increaseFlexShrink={onIncreaseFlexShrink} on:decreaseFlexShrink={onDecreaseFlexShrink} />
+         on:increaseFlexShrink={onIncreaseFlexShrink} on:decreaseFlexShrink={onDecreaseFlexShrink}
+         on:changeFlexBasis={onChangeFlexBasis} />
       {/if}
     </div>
     <div class="center">

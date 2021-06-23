@@ -1,5 +1,6 @@
 <script lang="typescript">
   import { createEventDispatcher } from "svelte";
+  import { getCSSUnitString } from "./flex-option.model";
   import type { FlexOptions } from "./flex-option.model";
 
   export let children: any[] = [];
@@ -32,6 +33,7 @@
         order: {child.order};
         flex-grow: {child.flexGrow};
         flex-shrink: {child.flexShrink};
+        flex-basis: {getCSSUnitString(child.flexBasis)};
         "
         on:click={() => childSelected(child)}
       >
@@ -42,6 +44,7 @@
           <div> order: {child.order} </div>
           <div> flex-grow: {child.flexGrow} </div>
           <div> flex-shrink: {child.flexShrink} </div>
+          <div> flex-basis: {getCSSUnitString(child.flexBasis)} </div>
         </div>
       </div>
     {/each}
