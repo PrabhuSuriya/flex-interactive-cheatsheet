@@ -32,7 +32,7 @@
   class="p-1 m-1 md:p-2 flex flex-row md:m-2 rounded"
   style="background-color: #a1e085;"
 >
-  <div class="ml-2">
+  <div>
     <h5 class="font-semibold text-base">{title}:</h5>
     <section class="flex flex-nowrap">
       <div class="flex">
