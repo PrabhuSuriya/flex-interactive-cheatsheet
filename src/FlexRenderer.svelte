@@ -9,7 +9,14 @@
 
   const dispatch = createEventDispatcher();
 
-  const childSelected = (child) => dispatch("childSelected", child);
+  const childSelected = (child) => {
+    if (selectedChild?.id !== child.id) {
+      dispatch("childSelected", child);
+    }
+    else {
+      dispatch("childDeselected", child);
+    }
+  }
 </script>
 
 {#if children.length}
@@ -27,7 +34,7 @@
   >
     {#each children as child, i}
       <div
-        class="flex items-start justify-start w-28 h-28 border-2 border-gray-700 bg-green-700 text-white relative"
+        class="flex items-start justify-start w-28 h-28 border border-gray-700 bg-green-700 text-white relative"
         class:active="{selectedChild?.id == child.id}"
         style="
         order: {child.order};
@@ -37,9 +44,12 @@
         "
         on:click={() => childSelected(child)}
       >
-        <span class="child-index absolute top-0 right-0 p-1 font-bold text-sm">
+        <span class="child-index-bg absolute top-0 right-0">
+        </span>
+        <span class="child-index absolute top-0 right-0 font-bold text-sm leading-none">
           {i}
         </span>
+          
         <div class="child-styles text-xs leading-tight p-1">
           <div> order: {child.order} </div>
           <div> flex-grow: {child.flexGrow} </div>
@@ -61,5 +71,11 @@
 <style>
   .active {
     background-color: #3b0671;
+  }
+  .child-index-bg {
+    width: 0;
+    height: 0;
+    border-top: 2.5em solid rgb(141 13 13);
+    border-left: 2.5em solid transparent;
   }
 </style>

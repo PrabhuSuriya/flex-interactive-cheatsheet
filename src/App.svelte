@@ -13,8 +13,6 @@
   import { ChildrenStore } from "./children-store";
   import { ParentStore } from "./parent-store";
 
-  const parentProp = {};
-
   const addChild = () => ChildrenStore.addChild();
   const removeChild = () => ChildrenStore.removeChild();
 
@@ -24,7 +22,8 @@
   const onJustifyContentChange = (e) => ParentStore.changeJustifyContent(e.detail.justifyContent);
   const onGapChange = (e) => ParentStore.changeGap(e.detail.gap);
 
-  const onChildSelected = (e) => ChildrenStore.selectChild(e.detail)
+  const onChildSelected = (e) => ChildrenStore.selectChild(e.detail);
+  const onChildDeSelected = (e) => ChildrenStore.deSelectChild(e.detail);
   const onIncreaseOrder = (e) => ChildrenStore.increaseOrder(e.detail.id);
   const onDecreaseOrder = (e) => ChildrenStore.decreaseOrder(e.detail.id);
   const onIncreaseFlexGrow = (e) => ChildrenStore.increaseFlexGrow(e.detail.id);
@@ -54,7 +53,7 @@
     <div class="right">
       <FlexJustifyContentSet  class="md:flex hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
-    <div class="bottom flex-wrap flex-col md:flex-row">
+    <div class="bottom flex-row flex-nowrap md:flex-wrap overflow-x-scroll md:overflow-x-auto">
       {#if $ChildrenStore.selectedChild}
          <ChildSet 
          child={$ChildrenStore.selectedChild} 
@@ -65,7 +64,7 @@
       {/if}
     </div>
     <div class="center">
-      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore.children} selectedChild={$ChildrenStore.selectedChild} on:childSelected={onChildSelected} />
+      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore.children} selectedChild={$ChildrenStore.selectedChild} on:childSelected={onChildSelected} on:childDeselected={onChildDeSelected} />
     </div>
     <div class="top-arrow">
      <ArrowRenderer type="horizontal" directon={$ParentStore.flex_direction} />
@@ -87,7 +86,7 @@
   height: calc(100vh - 3rem);
   display: grid;
   grid-template-columns: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.7fr;
-  grid-template-rows: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.4fr;
+  grid-template-rows: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.7fr;
   gap: 0px 0px;
   grid-template-areas:
     "top top top top top"
@@ -102,7 +101,7 @@
 @media (max-width:768px) {
   .container { 
     grid-template-columns: 0fr 0.1fr minmax(0, 3.8fr) 0.1fr 0fr;
-    grid-template-rows: 0.7fr 0.1fr minmax(0, 3.8fr) 0.1fr 0.4fr;
+    grid-template-rows: 0.7fr 0.1fr minmax(0, 3.8fr) 0.1fr minmax(0, 0.7fr);
   }
 }
 

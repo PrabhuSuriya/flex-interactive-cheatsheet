@@ -21,6 +21,9 @@ function childrenStore() {
 		selectChild: (child) => update(s => {
 			return Object.assign({}, s, { selectedChild: child });
 		}),
+		deSelectChild: (child) => update(s => {
+			return Object.assign({}, s, { selectedChild: null });
+		}),
 		increaseOrder: (id) => update(s => {
 			const child = s.children.find(x => x.id === id);
 			child.order++;
