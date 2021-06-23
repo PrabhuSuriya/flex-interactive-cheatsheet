@@ -3,6 +3,7 @@
   import type { FlexOptions } from "./flex-option.model";
 
   export let children: any[] = [];
+  export let selectedChild;
   export let flexOptions: FlexOptions;
 
   const dispatch = createEventDispatcher();
@@ -26,6 +27,7 @@
     {#each children as child, i}
       <div
         class="flex items-start justify-start w-28 h-28 border-2 border-gray-700 bg-green-700 text-white relative"
+        class:active="{selectedChild?.id == child.id}"
         style="
         order: {child.order};
         flex-grow: {child.flexGrow};
@@ -54,4 +56,7 @@
 {/if}
 
 <style>
+  .active {
+    background-color: #3b0671;
+  }
 </style>

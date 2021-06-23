@@ -1,4 +1,5 @@
 <script lang="ts">
+	import UnitOptions from './UnitOptions.svelte';
   import { createEventDispatcher } from "svelte";
 
   export let child;
@@ -13,72 +14,29 @@
   
 </script>
 
-<section
-  class="p-1 m-1 md:p-2 flex flex-row md:m-2 rounded"
-  style="background-color: #a1e085;"
->
-  <div>
-    <h5 class="font-semibold text-base">Order:</h5>
-    <section class="flex">
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={decreaseOrder}>-</button
-      >
-      <input
-        class="mr-2 w-10 text-center"
-        type="number"
-        name=""
-        id=""
-        value={child.order}
-      />
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={increaseOrder}>+</button
-      >
-    </section>
-  </div>
-  <div>
-    <h5 class="font-semibold text-base">Flex Grow:</h5>
-    <section class="flex">
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={decreaseFlexGrow}>-</button
-      >
-      <input
-        class="mr-2 w-10 text-center"
-        type="number"
-        name=""
-        id=""
-        value={child.flexGrow}
-      />
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={increaseFlexGrow}>+</button
-      >
-    </section>
-  </div>
-  <div>
-    <h5 class="font-semibold text-base">Flex Shrink:</h5>
-    <section class="flex">
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={decreaseFlexShrink}>-</button
-      >
-      <input
-        class="mr-2 w-10 text-center"
-        type="number"
-        name=""
-        id=""
-        value={child.flexShrink}
-      />
-      <button
-        class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded mr-2"
-        on:click={increaseFlexShrink}>+</button
-      >
-    </section>
-  </div>
- 
-</section>
+<UnitOptions
+  value={child.order}
+  title="Set Order"
+  items={[]}
+  on:add={increaseOrder}
+  on:remove={decreaseOrder}
+/>
+<UnitOptions
+  value={child.flexGrow}
+  title="Set Flex Grow"
+  items={[]}
+  on:add={increaseFlexGrow}
+  on:remove={decreaseFlexGrow}
+/>
+<UnitOptions
+  value={child.flexShrink}
+  title="Set Flex Shrink"
+  items={[]}
+  on:add={increaseFlexShrink}
+  on:remove={decreaseFlexShrink}
+/>
+
+
 
 <style>
   /* Chrome, Safari, Edge, Opera */

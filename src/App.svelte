@@ -61,7 +61,7 @@
       {/if}
     </div>
     <div class="center">
-      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore.children} on:childSelected={onChildSelected} />
+      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore.children} selectedChild={$ChildrenStore.selectedChild} on:childSelected={onChildSelected} />
     </div>
     <div class="top-arrow">
      <ArrowRenderer type="horizontal" directon={$ParentStore.flex_direction} />
