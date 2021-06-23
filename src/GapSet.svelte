@@ -8,7 +8,7 @@
   export let gap: Gap;
   const dispatch = createEventDispatcher();
 
-  const onChange = (e) => console.log("gapChange", { gap: e.detail });
+  const onChange = (e) => dispatch("gapChange", { gap: e.detail });
 
   const items = [
     { label: "px", value: "px" },
