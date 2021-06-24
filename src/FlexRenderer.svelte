@@ -9,13 +9,16 @@
 
   const dispatch = createEventDispatcher();
 
-  const childSelected = (child) => {
+  const onChildClick = (child) => {
     if (selectedChild?.id !== child.id) {
       dispatch("childSelected", child);
     }
     else {
       dispatch("childDeselected", child);
     }
+  }
+  const onBoxClick = () => {
+    dispatch("childDeselected");
   }
 </script>
 
@@ -31,6 +34,7 @@
     gap: {flexOptions.gap.value}{flexOptions.gap.unit};
     "
     class="flex border-gray-200 border-2"
+    on:click="{onBoxClick}"
   >
     {#each children as child, i}
       <div
@@ -43,7 +47,7 @@
         flex-basis: {getCSSUnitString(child.flexBasis)};
         align-self: {child.alignSelf};
         "
-        on:click={() => childSelected(child)}
+        on:click|stopPropagation={() => onChildClick(child)}
       >
         <span class="child-index-bg absolute top-0 right-0">
         </span>

@@ -21,7 +21,7 @@ function childrenStore() {
 		selectChild: (child) => update(s => {
 			return Object.assign({}, s, { selectedChild: child });
 		}),
-		deSelectChild: (child) => update(s => {
+		deSelectChild: (child?) => update(s => {
 			return Object.assign({}, s, { selectedChild: null });
 		}),
 		increaseOrder: (id) => update(s => {
