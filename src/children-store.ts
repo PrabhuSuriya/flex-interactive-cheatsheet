@@ -1,6 +1,9 @@
 import { writable } from 'svelte/store';
 import { ChildOptions, getChild } from './flex-option.model';
 
+function getNextId(children: ChildOptions[]): number {
+	return Math.max(...children.map(x => x.id)) + 1;
+}
 function childrenStore() {
 	const defaultChildren: { children: ChildOptions[], selectedChild: ChildOptions } = {
 		children: [0, 1, 2, 3].map(getChild),
@@ -11,11 +14,16 @@ function childrenStore() {
 	return {
 		subscribe,
 		addChild: () => update(s => {
-			const children = [...s.children, getChild(s.children.length + 1)];
+			const nextId = getNextId(s.children);
+			const children = [...s.children, getChild(nextId];
 			return Object.assign({}, s, { children });
 		}),
 		removeChild: () => update(s => {
 			const children = s.children.slice(0, -1);
+			return Object.assign({}, s, { children });
+		}),
+		deleteChild: (child) => update(s => {
+			const children = s.children.filter(x => x !== child);
 			return Object.assign({}, s, { children });
 		}),
 		selectChild: (child) => update(s => {

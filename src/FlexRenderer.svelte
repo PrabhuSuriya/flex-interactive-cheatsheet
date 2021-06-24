@@ -20,6 +20,9 @@
   const onBoxClick = () => {
     dispatch("childDeselected");
   }
+  const onChildDeleteClick = (child) => {
+    dispatch("childDeleted", child);
+  }
 </script>
 
 {#if children.length}
@@ -52,7 +55,13 @@
         <span class="child-index-bg absolute top-0 right-0">
         </span>
         <span class="child-index absolute top-0 right-0 font-bold text-sm leading-none">
-          {i}
+          {child.id}
+        </span>
+        <span class="child-delete absolute pr-1 text-red-400 font-bold bottom-0 right-0 cursor-pointer" 
+        title="Delete item"
+        on:click|stopPropagation={() => onChildDeleteClick(child)}
+        >
+          X
         </span>
           
         <div class="child-styles text-xs leading-tight p-1">

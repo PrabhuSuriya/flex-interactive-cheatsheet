@@ -15,6 +15,7 @@
 
   const addChild = () => ChildrenStore.addChild();
   const removeChild = () => ChildrenStore.removeChild();
+  const onChildDeleted = (e) => ChildrenStore.deleteChild(e.detail);
 
   const ondirectionChange = (e) => ParentStore.changeDirection(e.detail.direction);
   const onWrapChange = (e) => ParentStore.changeWrap(e.detail.wrap);
@@ -68,7 +69,7 @@
       {/if}
     </div>
     <div class="center">
-      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore.children} selectedChild={$ChildrenStore.selectedChild} on:childSelected={onChildSelected} on:childDeselected={onChildDeSelected} />
+      <FlexRenderer flexOptions={$ParentStore} children={$ChildrenStore.children} selectedChild={$ChildrenStore.selectedChild} on:childSelected={onChildSelected} on:childDeselected={onChildDeSelected} on:childDeleted={onChildDeleted} />
     </div>
     <div class="top-arrow">
      <ArrowRenderer type="horizontal" directon={$ParentStore.flex_direction} />
