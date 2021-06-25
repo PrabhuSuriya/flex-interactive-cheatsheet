@@ -12,17 +12,16 @@
   const onChildClick = (child) => {
     if (selectedChild?.id !== child.id) {
       dispatch("childSelected", child);
-    }
-    else {
+    } else {
       dispatch("childDeselected", child);
     }
-  }
+  };
   const onBoxClick = () => {
     dispatch("childDeselected");
-  }
+  };
   const onChildDeleteClick = (child) => {
     dispatch("childDeleted", child);
-  }
+  };
 </script>
 
 {#if children.length}
@@ -36,13 +35,13 @@
     justify-content: {flexOptions.justify_content};
     gap: {flexOptions.gap.value}{flexOptions.gap.unit};
     "
-    class="flex border-gray-200 border-2"
-    on:click="{onBoxClick}"
+    class="flex border-green-700 border-2"
+    on:click={onBoxClick}
   >
     {#each children as child, i}
       <div
-        class="flex items-start justify-start w-28 h-28 border border-gray-700 bg-green-700 text-white relative"
-        class:active="{selectedChild?.id == child.id}"
+        class="flex-child flex items-start justify-start w-28 h-28 border border-gray-700 bg-green-700 text-white relative"
+        class:active={selectedChild?.id == child.id}
         style="
         order: {child.order};
         flex-grow: {child.flexGrow};
@@ -52,24 +51,26 @@
         "
         on:click|stopPropagation={() => onChildClick(child)}
       >
-        <span class="child-index-bg absolute top-0 right-0">
-        </span>
-        <span class="child-index absolute top-0 right-0 font-bold text-sm leading-none">
+        <span class="child-index-bg absolute top-0 right-0" />
+        <span
+          class="child-index absolute top-0 right-0 font-bold text-sm leading-none"
+        >
           {child.id}
         </span>
-        <span class="child-delete absolute pr-1 text-red-400 font-bold bottom-0 right-0 cursor-pointer" 
-        title="Delete item"
-        on:click|stopPropagation={() => onChildDeleteClick(child)}
+        <span
+          class="child-delete absolute pr-1 text-red-400 font-bold bottom-0 right-0 cursor-pointer"
+          title="Delete item"
+          on:click|stopPropagation={() => onChildDeleteClick(child)}
         >
           X
         </span>
-          
+
         <div class="child-styles text-xs leading-tight p-1">
-          <div> order: {child.order} </div>
-          <div> flex-grow: {child.flexGrow} </div>
-          <div> flex-shrink: {child.flexShrink} </div>
-          <div> flex-basis: {getCSSUnitString(child.flexBasis)} </div>
-          <div> align-self: {child.alignSelf} </div>
+          <div>order: {child.order}</div>
+          <div>flex-grow: {child.flexGrow}</div>
+          <div>flex-shrink: {child.flexShrink}</div>
+          <div>flex-basis: {getCSSUnitString(child.flexBasis)}</div>
+          <div>align-self: {child.alignSelf}</div>
         </div>
       </div>
     {/each}
@@ -84,8 +85,22 @@
 {/if}
 
 <style>
+  .flex-child {
+    background: linear-gradient(32deg, #599f32, #80be5e);
+  }
   .active {
-    background-color: #3b0671;
+    /* background-color: #3b0671 !important; */
+    background: #005c97; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #363795,
+      #005c97
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #363795,
+      #005c97
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   .child-index-bg {
     width: 0;

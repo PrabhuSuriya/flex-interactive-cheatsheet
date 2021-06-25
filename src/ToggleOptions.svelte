@@ -13,7 +13,7 @@
 
 </script>
 
-<section class="{clazz} p-1 m-1 md:p-2 flex flex-row md:m-2 rounded whitespace-nowrap" style="background-color: #9DB2F7;">
+<section class="{clazz} wrapper p-1 m-1 md:p-2 flex flex-row md:m-2 rounded whitespace-nowrap" style="background-color: #9DB2F7;">
   <div>
     <h5 class="font-semibold text-base">{label}:</h5>
     <section class="flex flex-nowrap gap-y-2" class:flex-col={direction === 'vertical'}>
@@ -32,4 +32,13 @@
 </section>
 
 <style>
+  section.wrapper {
+    background: #a8ff78;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    border: 1px #17ad0c solid;
+    box-shadow: 0px 1px 4px 1px #80c82d;
+    box-sizing: border-box;
+  }
 </style>

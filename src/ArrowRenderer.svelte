@@ -48,8 +48,9 @@
       align-items: center;
       justify-content: center;
       .text {
-        background-color: white;
+        background: #a0d8a0;
         padding: 0 1rem;
+        border-radius: 6px;
       }
     }
     &.horizontal {
@@ -74,8 +75,9 @@
     }
     .arrow-head {
       border-width: 0.5rem;
-      border-color: white;
+      border-color: transparent;
       border-style: solid;
+      background-color: transparent;
 
       &.to-right {
         border-left-color: black;
