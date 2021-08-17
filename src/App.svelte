@@ -42,7 +42,7 @@
 <main>
   <Header />
   <div class="container sm:max-w-none">
-    <div class="top flex-row flex-nowrap md:flex-wrap overflow-x-scroll md:overflow-x-auto" style="height: fit-content;">
+    <div class="top flex-row flex-nowrap overflow-x-scroll md:overflow-x-auto" style="height: fit-content;">
       <ChildrenSet children={$ChildrenStore.children} on:addChild={addChild} on:removeChild={removeChild} />
       <GapSet gap={$ParentStore.gap} on:gapChange={onGapChange} />
       <FlexDirectionSet direction={$ParentStore.flex_direction} on:directionChange={ondirectionChange} />
@@ -56,7 +56,7 @@
     <div class="right">
       <FlexJustifyContentSet  class="md:flex hidden" justifyContent={$ParentStore.justify_content} on:justifyContentChange={onJustifyContentChange} />
     </div>
-    <div class="bottom flex-row flex-nowrap md:flex-wrap overflow-x-scroll md:overflow-x-auto">
+    <div class="bottom flex-row flex-nowrap overflow-x-scroll md:overflow-x-auto" style="height: fit-content;">
       {#if $ChildrenStore.selectedChild}
          <ChildSet 
          child={$ChildrenStore.selectedChild} 
@@ -91,7 +91,7 @@
   height: calc(100vh - 3rem);
   display: grid;
   grid-template-columns: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.7fr;
-  grid-template-rows: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.7fr;
+  grid-template-rows: 0.7fr 0.2fr minmax(0, 3.8fr) 0.2fr 0.9fr;
   gap: 0px 0px;
   grid-template-areas:
     "top top top top top"

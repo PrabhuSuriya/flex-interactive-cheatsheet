@@ -13,7 +13,7 @@
 
 </script>
 
-<section class="{clazz} wrapper p-1 m-1 md:p-2 flex flex-row md:m-2 rounded whitespace-nowrap" style="background-color: #9DB2F7;">
+<section class="{clazz} wrapper p-1 m-1 pb-2 flex flex-row rounded whitespace-nowrap" style="background-color: #9DB2F7;">
   <div>
     <h5 class="font-semibold text-base">{label}:</h5>
     <section class="flex flex-nowrap gap-y-2" class:flex-col={direction === 'vertical'}>

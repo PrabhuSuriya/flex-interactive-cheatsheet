@@ -13,7 +13,7 @@
   <section class="flex" class:flex-col={direction === 'vertical'}>
     {#each items as item}
       <button
-        class="hover:bg-green-300 font-bold py-2 px-4 rounded-none border-r-0 last:border-r first:rounded-l last:rounded-r border-yellow-800"
+        class="hover:bg-green-300 font-bold py-2 px-4 pb-2 rounded-none border-r-0 last:border-r first:rounded-l last:rounded-r border-yellow-800"
         
         class:my-2={direction === 'vertical'}
         class:bg-green-600={value === item.value}

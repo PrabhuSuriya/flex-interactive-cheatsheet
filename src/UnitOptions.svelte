@@ -29,7 +29,7 @@
 </script>
 
 <section
-  class="wrapper p-1 m-1 md:p-2 flex flex-row md:m-2 rounded"
+  class="wrapper p-1 m-1 flex flex-row rounded"
   style="background-color: #a1e085;"
 >
   <div>
