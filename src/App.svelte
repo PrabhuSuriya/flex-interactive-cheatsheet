@@ -34,16 +34,13 @@
   const onChangeFlexBasis = (e) => ChildrenStore.setFlexBasis(e.detail.child.id, e.detail.flexBasis);
   const onAlignSelfChange = (e) => ChildrenStore.setAlignSelf(e.detail.child.id, e.detail.alignSelf);
 
-  let showCodeCopyModal = false;
-  const onToggleCodeCopyModal = (e) => {
-    showCodeCopyModal = e.detail;
-  }
+
 
 </script>
 
 <Tailwindcss />
 <main>
-  <Header {showCodeCopyModal} on:toggleCodeCopyModal={onToggleCodeCopyModal}/>
+  <Header />
   <div class="container sm:max-w-none">
     <div class="top flex-row flex-nowrap overflow-x-scroll md:overflow-x-auto" style="height: fit-content;">
       <ChildrenSet children={$ChildrenStore.children} on:addChild={addChild} on:removeChild={removeChild} />
